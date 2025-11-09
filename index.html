@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mein Schulfortschritt</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -25,6 +26,10 @@
     .subject h2 {
       margin-top: 0;
     }
+    .chart-container {
+      width: 200px;
+      margin: 1rem auto;
+    }
     .task {
       display: flex;
       align-items: center;
@@ -40,18 +45,16 @@
       gap: 1rem;
       align-items: center;
     }
-    .progress-container {
-      margin: 1rem 0;
-    }
-    progress {
-      width: 100%;
-      height: 20px;
-    }
     .type {
       font-weight: bold;
       font-size: 0.9em;
       color: #444;
       margin-right: 0.5rem;
+    }
+    .status {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -61,7 +64,6 @@
   <div id="subjects"></div>
 
   <script>
-    // =============== CONFIG ===============
     const subjects = {
       "WEBT": {
         coreRequiredSemester: 4,
@@ -153,12 +155,48 @@
       }
     };
 
-    // =============== LOGIC ===============
     function loadProgress() {
       return JSON.parse(localStorage.getItem("progress") || "{}");
     }
     function saveProgress(data) {
       localStorage.setItem("progress", JSON.stringify(data));
+    }
+
+    function getStatus(subject, info, progress) {
+      const doneCore = info.tasks.filter(([type, name]) =>
+        type === "CORE" &&
+        progress[subject + "_" + name] &&
+        progress[subject + "_" + name].meeting &&
+        progress[subject + "_" + name].quiz
+      ).length;
+      const doneAdv = info.tasks.filter(([type, name]) =>
+        type === "ADV" &&
+        progress[subject + "_" + name] &&
+        progress[subject + "_" + name].meeting &&
+        progress[subject + "_" + name].quiz
+      ).length;
+
+      let semester = "Nicht positiv";
+      let jahr = "Nicht positiv";
+
+      // Semester
+      if (doneCore >= info.coreRequiredSemester) {
+        semester = "Positiv (4)";
+        info.advImproveSemester.forEach((n, i) => {
+          if (doneAdv >= n) semester = ["Befriedigend (3)", "Gut (2)", "Sehr gut (1)"][i] || semester;
+        });
+      }
+
+      // Jahr
+      if (doneCore >= info.coreRequiredYear) {
+        jahr = "Positiv (4)";
+        info.advImproveYear.forEach((n, i) => {
+          if (doneAdv >= n) jahr = ["Befriedigend (3)", "Gut (2)", "Sehr gut (1)"][i] || jahr;
+        });
+      }
+
+      const percent = Math.round(((doneCore + doneAdv) / info.tasks.length) * 100);
+      return { doneCore, doneAdv, semester, jahr, percent };
     }
 
     function render() {
@@ -170,28 +208,19 @@
         const div = document.createElement("div");
         div.className = "subject";
 
-        // Fortschritt berechnen
-        const done = info.tasks.filter(([type, name]) => {
-          const key = subject + "_" + name;
-          const val = progress[key];
-          return val && val.quiz && val.meeting;
-        }).length;
-        const total = info.tasks.length;
-        const percent = Math.round((done / total) * 100);
+        const status = getStatus(subject, info, progress);
 
         div.innerHTML = `
           <h2>${subject}</h2>
-          <div class="progress-container">
-            <progress value="${done}" max="${total}"></progress>
-            <div>${done}/${total} Aufgaben erledigt (${percent}%)</div>
+          <div class="chart-container">
+            <canvas id="chart_${subject}"></canvas>
           </div>
+          <div class="status">Semester: ${status.semester} | Jahr: ${status.jahr}</div>
         `;
 
-        // Aufgabenliste
         info.tasks.forEach(([type, name]) => {
           const key = subject + "_" + name;
           const val = progress[key] || { quiz: false, meeting: false };
-
           const row = document.createElement("div");
           row.className = "task";
           row.innerHTML = `
@@ -206,9 +235,28 @@
         });
 
         container.appendChild(div);
+
+        // Donut zeichnen
+        const ctx = document.getElementById(`chart_${subject}`).getContext("2d");
+        new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: ["Erledigt", "Offen"],
+            datasets: [{
+              data: [status.doneCore + status.doneAdv, info.tasks.length - (status.doneCore + status.doneAdv)],
+            }]
+          },
+          options: {
+            plugins: {
+              legend: { position: "bottom" },
+              tooltip: { enabled: false }
+            },
+            cutout: "70%"
+          }
+        });
       }
 
-      // Checkboxen-Events
+      // Checkbox Events
       document.querySelectorAll("input[type=checkbox]").forEach(cb => {
         cb.addEventListener("change", e => {
           const key = e.target.dataset.key;
@@ -217,7 +265,7 @@
           if (!progress[key]) progress[key] = { quiz: false, meeting: false };
           progress[key][field] = e.target.checked;
           saveProgress(progress);
-          render(); // neu zeichnen
+          render();
         });
       });
     }
