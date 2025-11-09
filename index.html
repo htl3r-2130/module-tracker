@@ -47,8 +47,18 @@
     }
     .type {
       font-weight: bold;
-      font-size: 0.9em;
+      font-size: 0.85em;
       color: #444;
+      width: 70px;
+      text-align: right;
+      margin-right: 0.5rem;
+    }
+    .num {
+      font-weight: bold;
+      font-size: 0.85em;
+      color: #777;
+      width: 45px;
+      text-align: right;
       margin-right: 0.5rem;
     }
     .status {
@@ -70,45 +80,47 @@
         coreRequiredYear: 8,
         advImproveSemester: [1,2,4],
         advImproveYear: [2,4,8],
+        maxCoreCount: 8,
+        maxAdvCount: 8,
         tasks: [
-          ["CORE", "Docker"],
-          ["CORE", "Object Oriented PHP with Version Control"],
-          ["CORE", "Web Services with Plain PHP and JavaScript"],
-          ["CORE", "Composer and Views in MVC"],
-          ["CORE", "Sessions and Cookies"],
-          ["CORE", "Symfony - Webservice with basic VC"],
-          ["CORE", "Symfony - Using Doctrine ORM for persistence"],
-          ["CORE", "Erste Schritte mit TYPO3"],
-          ["ADV", "CI/CD mit Github"],
-          ["ADV", "Basic Unit Tests in PHP"],
-          ["ADV", "Coding Standards"],
-          ["ADV", "Composer in TYPO3"],
-          ["ADV", "Fluid Templating Engine"],
-          ["ADV", "GIT Expert"],
-          ["ADV", "Git Workflows"],
-          ["ADV", "OpenAPI"],
-          ["ADV", "PHP Documentation"],
-          ["ADV", "Redis"],
-          ["ADV", "Responsive Websites with SASS"],
-          ["ADV", "Speaking URLs for websites"],
-          ["ADV", "Swagger"],
-          ["ADV", "Symfony - Extending Twig"],
-          ["ADV", "Symfony - Security"],
-          ["ADV", "Symfony - Translations and Localized Routes"],
-          ["ADV", "Symfony - Validation"],
-          ["ADV", "Twig Templating Engine"],
-          ["ADV", "TYPO3 Backend Module erstellen"],
-          ["ADV", "TYPO3 Barrierefreiheit"],
-          ["ADV", "TYPO3 Benutzergruppen"],
-          ["ADV", "TYPO3 Bilder mit TypoScript erstellen"],
-          ["ADV", "TYPO3 Extensions einsetzen"],
-          ["ADV", "TYPO3 Fluid Teil 1"],
-          ["ADV", "TYPO3 Formulare"],
-          ["ADV", "TYPO3 MVC"],
-          ["ADV", "TYPO3 Routing and Redirects"],
-          ["ADV", "TYPO3 Translations"],
-          ["ADV", "TYPO3 TypoScript"],
-          ["ADV", "XDebug"]
+          ["CORE", "01", "Docker"],
+          ["CORE", "02", "Object Oriented PHP with Version Control"],
+          ["CORE", "03", "Web Services with Plain PHP and JavaScript"],
+          ["CORE", "04", "Composer and Views in MVC"],
+          ["CORE", "05", "Sessions and Cookies"],
+          ["CORE", "06", "Symfony - Webservice with basic VC"],
+          ["CORE", "07", "Symfony - Using Doctrine ORM for persistence"],
+          ["CORE", "08", "Erste Schritte mit TYPO3"],
+          ["ADV", "", "CI/CD mit Github"],
+          ["ADV", "", "Basic Unit Tests in PHP"],
+          ["ADV", "", "Coding Standards"],
+          ["ADV", "", "Composer in TYPO3"],
+          ["ADV", "", "Fluid Templating Engine"],
+          ["ADV", "", "GIT Expert"],
+          ["ADV", "", "Git Workflows"],
+          ["ADV", "", "OpenAPI"],
+          ["ADV", "", "PHP Documentation"],
+          ["ADV", "", "Redis"],
+          ["ADV", "", "Responsive Websites with SASS"],
+          ["ADV", "", "Speaking URLs for websites"],
+          ["ADV", "", "Swagger"],
+          ["ADV", "", "Symfony - Extending Twig"],
+          ["ADV", "", "Symfony - Security"],
+          ["ADV", "", "Symfony - Translations and Localized Routes"],
+          ["ADV", "", "Symfony - Validation"],
+          ["ADV", "", "Twig Templating Engine"],
+          ["ADV", "", "TYPO3 Backend Module erstellen"],
+          ["ADV", "", "TYPO3 Barrierefreiheit"],
+          ["ADV", "", "TYPO3 Benutzergruppen"],
+          ["ADV", "", "TYPO3 Bilder mit TypoScript erstellen"],
+          ["ADV", "", "TYPO3 Extensions einsetzen"],
+          ["ADV", "", "TYPO3 Fluid Teil 1"],
+          ["ADV", "", "TYPO3 Formulare"],
+          ["ADV", "", "TYPO3 MVC"],
+          ["ADV", "", "TYPO3 Routing and Redirects"],
+          ["ADV", "", "TYPO3 Translations"],
+          ["ADV", "", "TYPO3 TypoScript"],
+          ["ADV", "", "XDebug"]
         ]
       },
       "SEW": {
@@ -117,21 +129,21 @@
         advImproveSemester: [1,2,3,4],
         advImproveYear: [2,4,6,8],
         tasks: [
-          ["CORE","JavaScript Basics 4th Grade"],
-          ["CORE","JavaScript Working with Objects"],
-          ["CORE","JavaScript Modules"],
-          ["ADV","JavaScript Classes"],
-          ["CORE","Vue App Template"],
-          ["CORE","Todo App"],
-          ["ADV","Linting und Debugging vue.js"],
-          ["ADV","Todo App extended"],
-          ["CORE","Registrationform"],
-          ["CORE","IP Address Lookup"],
-          ["CORE","Recipe Search"],
-          ["CORE","Webshop"],
-          ["ADV","vue.js Component Testing"],
-          ["ADV","i18n for vue.js Projects"],
-          ["ADV","vue.js Ecosystem & Individual vue.js Project"]
+          ["CORE","01","JavaScript Basics 4th Grade"],
+          ["CORE","02","JavaScript Working with Objects"],
+          ["CORE","03","JavaScript Modules"],
+          ["ADV","04","JavaScript Classes"],
+          ["CORE","05","Vue App Template"],
+          ["CORE","06","Todo App"],
+          ["ADV","07","Linting und Debugging vue.js"],
+          ["ADV","08","Todo App extended"],
+          ["CORE","09","Registrationform"],
+          ["CORE","10","IP Address Lookup"],
+          ["CORE","11","Recipe Search"],
+          ["CORE","12","Webshop"],
+          ["ADV","13","vue.js Component Testing"],
+          ["ADV","14","i18n for vue.js Projects"],
+          ["ADV","15","vue.js Ecosystem & Individual vue.js Project"]
         ]
       },
       "CMS": {
@@ -140,23 +152,23 @@
         advImproveSemester: [1,2,3,4],
         advImproveYear: [2,4,6,8],
         tasks: [
-          ["CORE","General Basics"],
-          ["CORE","Installing WordPress"],
-          ["CORE","Creating and Managing Content in WordPress"],
-          ["CORE","Setting up Plugins in WordPress"],
-          ["CORE","Creating a Custom Theme in WordPress"],
-          ["ADV","Accessibility in WordPress with the help of a plugin"],
-          ["ADV","Caching Optimization in WordPress"],
-          ["ADV","Creating a WordPress Backup Strategy"],
-          ["ADV","Hardening WordPress"],
-          ["ADV","SEO in WordPress with the help of a plugin"],
-          ["ADV","Setting up roles in WordPress"]
+          ["CORE","01","General Basics"],
+          ["CORE","02","Installing WordPress"],
+          ["CORE","03","Creating and Managing Content in WordPress"],
+          ["CORE","04","Setting up Plugins in WordPress"],
+          ["CORE","05","Creating a Custom Theme in WordPress"],
+          ["ADV","06","Accessibility in WordPress with the help of a plugin"],
+          ["ADV","07","Caching Optimization in WordPress"],
+          ["ADV","08","Creating a WordPress Backup Strategy"],
+          ["ADV","09","Hardening WordPress"],
+          ["ADV","10","SEO in WordPress with the help of a plugin"],
+          ["ADV","11","Setting up roles in WordPress"]
         ]
       }
     };
 
-    const charts = {}; // speichert Chart-Objekte
-    const statusElements = {}; // speichert Status-Text-Elemente
+    const charts = {};
+    const statusElements = {};
 
     function loadProgress() {
       return JSON.parse(localStorage.getItem("progress") || "{}");
@@ -166,13 +178,13 @@
     }
 
     function getStatus(subject, info, progress) {
-      const doneCore = info.tasks.filter(([type, name]) =>
+      const doneCore = info.tasks.filter(([type, , name]) =>
         type === "CORE" &&
         progress[subject + "_" + name] &&
         progress[subject + "_" + name].meeting &&
         progress[subject + "_" + name].quiz
       ).length;
-      const doneAdv = info.tasks.filter(([type, name]) =>
+      const doneAdv = info.tasks.filter(([type, , name]) =>
         type === "ADV" &&
         progress[subject + "_" + name] &&
         progress[subject + "_" + name].meeting &&
@@ -196,26 +208,24 @@
         });
       }
 
-      const percent = Math.round(((doneCore + doneAdv) / info.tasks.length) * 100);
-      return { doneCore, doneAdv, semester, jahr, percent };
+      const totalRelevantCore = info.maxCoreCount || info.tasks.filter(t => t[0] === "CORE").length;
+      const totalRelevantAdv = info.maxAdvCount || info.tasks.filter(t => t[0] === "ADV").length;
+      const relevantTotal = totalRelevantCore + totalRelevantAdv;
+      const relevantDone = Math.min(doneCore, totalRelevantCore) + Math.min(doneAdv, totalRelevantAdv);
+
+      return { doneCore, doneAdv, semester, jahr, relevantDone, relevantTotal };
     }
 
     function updateSubject(subject) {
       const progress = loadProgress();
       const info = subjects[subject];
       const status = getStatus(subject, info, progress);
-
-      // Donut aktualisieren
-      const chart = charts[subject];
-      chart.data.datasets[0].data = [
-        status.doneCore + status.doneAdv,
-        info.tasks.length - (status.doneCore + status.doneAdv)
+      charts[subject].data.datasets[0].data = [
+        status.relevantDone,
+        status.relevantTotal - status.relevantDone
       ];
-      chart.update();
-
-      // Status-Text aktualisieren
-      const el = statusElements[subject];
-      el.textContent = `Semester: ${status.semester} | Jahr: ${status.jahr}`;
+      charts[subject].update();
+      statusElements[subject].textContent = `Semester: ${status.semester} | Jahr: ${status.jahr}`;
     }
 
     function render() {
@@ -231,13 +241,15 @@
           <div class="chart-container"><canvas id="chart_${subject}"></canvas></div>
           <div class="status" id="status_${subject}"></div>
         `;
-        info.tasks.forEach(([type, name]) => {
+
+        info.tasks.forEach(([type, num, name]) => {
           const key = subject + "_" + name;
           const val = progress[key] || { quiz: false, meeting: false };
           const row = document.createElement("div");
           row.className = "task";
           row.innerHTML = `
             <span class="type">${type}</span>
+            <span class="num">${num ? num : ""}</span>
             <label>${name}</label>
             <div class="checkboxes">
               <label><input type="checkbox" ${val.meeting ? "checked" : ""} data-key="${key}" data-field="meeting" data-subject="${subject}"> Gespräch</label>
@@ -246,6 +258,7 @@
           `;
           div.appendChild(row);
         });
+
         container.appendChild(div);
 
         const ctx = document.getElementById(`chart_${subject}`).getContext("2d");
@@ -258,7 +271,7 @@
           data: {
             labels: ["Erledigt", "Offen"],
             datasets: [{
-              data: [status.doneCore + status.doneAdv, info.tasks.length - (status.doneCore + status.doneAdv)]
+              data: [status.relevantDone, status.relevantTotal - status.relevantDone]
             }]
           },
           options: {
@@ -271,7 +284,6 @@
         });
       }
 
-      // Checkbox-Events
       document.querySelectorAll("input[type=checkbox]").forEach(cb => {
         cb.addEventListener("change", e => {
           const key = e.target.dataset.key;
