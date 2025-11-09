@@ -1,0 +1,84 @@
+{
+  "WEBT": {
+    "core": [
+      {"id": "01", "title": "Docker", "conversation": false, "quiz": false},
+      {"id": "02", "title": "Object Oriented PHP with Version Control", "conversation": false, "quiz": false},
+      {"id": "03", "title": "Web Services with Plain PHP and JavaScript", "conversation": false, "quiz": false},
+      {"id": "04", "title": "Composer and Views in MVC", "conversation": false, "quiz": false},
+      {"id": "05", "title": "Sessions and Cookies", "conversation": false, "quiz": false},
+      {"id": "06", "title": "Symfony - Webservice with basic VC", "conversation": false, "quiz": false},
+      {"id": "07", "title": "Symfony - Using Doctrine ORM for persistence", "conversation": false, "quiz": false},
+      {"id": "08", "title": "Erste Schritte mit TYPO3", "conversation": false, "quiz": false}
+    ],
+    "adv": [
+      {"title": "CI/CD mit Github", "conversation": false, "quiz": false},
+      {"title": "Basic Unit Tests in PHP", "conversation": false, "quiz": false},
+      {"title": "Coding Standards", "conversation": false, "quiz": false},
+      {"title": "Composer in TYPO3", "conversation": false, "quiz": false},
+      {"title": "Fluid Templating Engine", "conversation": false, "quiz": false},
+      {"title": "GIT Expert", "conversation": false, "quiz": false},
+      {"title": "Git Workflows", "conversation": false, "quiz": false},
+      {"title": "OpenAPI", "conversation": false, "quiz": false},
+      {"title": "PHP Documentation", "conversation": false, "quiz": false},
+      {"title": "Redis", "conversation": false, "quiz": false},
+      {"title": "Responsive Websites with SASS", "conversation": false, "quiz": false},
+      {"title": "Speaking URLs for websites", "conversation": false, "quiz": false},
+      {"title": "Swagger", "conversation": false, "quiz": false},
+      {"title": "Symfony - Extending Twig", "conversation": false, "quiz": false},
+      {"title": "Symfony - Security", "conversation": false, "quiz": false},
+      {"title": "Symfony - Translations and Localized Routes", "conversation": false, "quiz": false},
+      {"title": "Symfony - Validation", "conversation": false, "quiz": false},
+      {"title": "Twig Templating Engine", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Backend Module erstellen", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Barrierefreiheit", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Benutzergruppen", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Bilder mit TypoScript erstellen", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Extensions einsetzen", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Fluid Teil 1", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Formulare", "conversation": false, "quiz": false},
+      {"title": "TYPO3 MVC", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Routing and Redirects", "conversation": false, "quiz": false},
+      {"title": "TYPO3 Translations", "conversation": false, "quiz": false},
+      {"title": "TYPO3 TypoScript", "conversation": false, "quiz": false},
+      {"title": "XDebug", "conversation": false, "quiz": false}
+    ]
+  },
+  "SEW": {
+    "core": [
+      {"id": "01", "title": "JavaScript Basics 4th Grade", "conversation": false, "quiz": false},
+      {"id": "02", "title": "JavaScript Working with Objects", "conversation": false, "quiz": false},
+      {"id": "03", "title": "JavaScript Modules", "conversation": false, "quiz": false},
+      {"id": "05", "title": "Vue App Template", "conversation": false, "quiz": false},
+      {"id": "06", "title": "Todo App", "conversation": false, "quiz": false},
+      {"id": "09", "title": "Registrationform", "conversation": false, "quiz": false},
+      {"id": "10", "title": "IP Address Lookup", "conversation": false, "quiz": false},
+      {"id": "11", "title": "Recipe Search", "conversation": false, "quiz": false},
+      {"id": "12", "title": "Webshop", "conversation": false, "quiz": false}
+    ],
+    "adv": [
+      {"title": "JavaScript Classes", "conversation": false, "quiz": false},
+      {"title": "Linting und Debugging vue.js", "conversation": false, "quiz": false},
+      {"title": "Todo App extended", "conversation": false, "quiz": false},
+      {"title": "vue.js Component Testing", "conversation": false, "quiz": false},
+      {"title": "i18n for vue.js Projects", "conversation": false, "quiz": false},
+      {"title": "vue.js Ecosystem & Individual vue.js Project", "conversation": false, "quiz": false}
+    ]
+  },
+  "CMS": {
+    "core": [
+      {"id": "01", "title": "General Basics", "conversation": false, "quiz": false},
+      {"id": "02", "title": "Installing WordPress", "conversation": false, "quiz": false},
+      {"id": "03", "title": "Creating and Managing Content in WordPress", "conversation": false, "quiz": false},
+      {"id": "04", "title": "Setting up Plugins in WordPress", "conversation": false, "quiz": false},
+      {"id": "05", "title": "Creating a Custom Theme in WordPress", "conversation": false, "quiz": false}
+    ],
+    "adv": [
+      {"title": "Accessibility in WordPress with the help of a plugin", "conversation": false, "quiz": false},
+      {"title": "Caching Optimization in WordPress", "conversation": false, "quiz": false},
+      {"title": "Creating a WordPress Backup Strategy", "conversation": false, "quiz": false},
+      {"title": "Hardening WordPress", "conversation": false, "quiz": false},
+      {"title": "SEO in WordPress with the help of a plugin", "conversation": false, "quiz": false},
+      {"title": "Setting up roles in WordPress", "conversation": false, "quiz": false}
+    ]
+  }
+}
