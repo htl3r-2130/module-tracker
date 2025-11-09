@@ -155,6 +155,9 @@
       }
     };
 
+    const charts = {}; // speichert Chart-Objekte
+    const statusElements = {}; // speichert Status-Text-Elemente
+
     function loadProgress() {
       return JSON.parse(localStorage.getItem("progress") || "{}");
     }
@@ -179,7 +182,6 @@
       let semester = "Nicht positiv";
       let jahr = "Nicht positiv";
 
-      // Semester
       if (doneCore >= info.coreRequiredSemester) {
         semester = "Positiv (4)";
         info.advImproveSemester.forEach((n, i) => {
@@ -187,7 +189,6 @@
         });
       }
 
-      // Jahr
       if (doneCore >= info.coreRequiredYear) {
         jahr = "Positiv (4)";
         info.advImproveYear.forEach((n, i) => {
@@ -199,6 +200,24 @@
       return { doneCore, doneAdv, semester, jahr, percent };
     }
 
+    function updateSubject(subject) {
+      const progress = loadProgress();
+      const info = subjects[subject];
+      const status = getStatus(subject, info, progress);
+
+      // Donut aktualisieren
+      const chart = charts[subject];
+      chart.data.datasets[0].data = [
+        status.doneCore + status.doneAdv,
+        info.tasks.length - (status.doneCore + status.doneAdv)
+      ];
+      chart.update();
+
+      // Status-Text aktualisieren
+      const el = statusElements[subject];
+      el.textContent = `Semester: ${status.semester} | Jahr: ${status.jahr}`;
+    }
+
     function render() {
       const progress = loadProgress();
       const container = document.getElementById("subjects");
@@ -207,17 +226,11 @@
       for (const [subject, info] of Object.entries(subjects)) {
         const div = document.createElement("div");
         div.className = "subject";
-
-        const status = getStatus(subject, info, progress);
-
         div.innerHTML = `
           <h2>${subject}</h2>
-          <div class="chart-container">
-            <canvas id="chart_${subject}"></canvas>
-          </div>
-          <div class="status">Semester: ${status.semester} | Jahr: ${status.jahr}</div>
+          <div class="chart-container"><canvas id="chart_${subject}"></canvas></div>
+          <div class="status" id="status_${subject}"></div>
         `;
-
         info.tasks.forEach(([type, name]) => {
           const key = subject + "_" + name;
           const val = progress[key] || { quiz: false, meeting: false };
@@ -227,23 +240,25 @@
             <span class="type">${type}</span>
             <label>${name}</label>
             <div class="checkboxes">
-              <label><input type="checkbox" ${val.meeting ? "checked" : ""} data-key="${key}" data-field="meeting"> Gespräch</label>
-              <label><input type="checkbox" ${val.quiz ? "checked" : ""} data-key="${key}" data-field="quiz"> Quiz</label>
+              <label><input type="checkbox" ${val.meeting ? "checked" : ""} data-key="${key}" data-field="meeting" data-subject="${subject}"> Gespräch</label>
+              <label><input type="checkbox" ${val.quiz ? "checked" : ""} data-key="${key}" data-field="quiz" data-subject="${subject}"> Quiz</label>
             </div>
           `;
           div.appendChild(row);
         });
-
         container.appendChild(div);
 
-        // Donut zeichnen
         const ctx = document.getElementById(`chart_${subject}`).getContext("2d");
-        new Chart(ctx, {
+        const status = getStatus(subject, info, progress);
+        statusElements[subject] = document.getElementById(`status_${subject}`);
+        statusElements[subject].textContent = `Semester: ${status.semester} | Jahr: ${status.jahr}`;
+
+        charts[subject] = new Chart(ctx, {
           type: "doughnut",
           data: {
             labels: ["Erledigt", "Offen"],
             datasets: [{
-              data: [status.doneCore + status.doneAdv, info.tasks.length - (status.doneCore + status.doneAdv)],
+              data: [status.doneCore + status.doneAdv, info.tasks.length - (status.doneCore + status.doneAdv)]
             }]
           },
           options: {
@@ -256,16 +271,17 @@
         });
       }
 
-      // Checkbox Events
+      // Checkbox-Events
       document.querySelectorAll("input[type=checkbox]").forEach(cb => {
         cb.addEventListener("change", e => {
           const key = e.target.dataset.key;
           const field = e.target.dataset.field;
+          const subject = e.target.dataset.subject;
           const progress = loadProgress();
           if (!progress[key]) progress[key] = { quiz: false, meeting: false };
           progress[key][field] = e.target.checked;
           saveProgress(progress);
-          render();
+          updateSubject(subject);
         });
       });
     }
