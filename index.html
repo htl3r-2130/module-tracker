@@ -1,22 +1,228 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Module Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Schulfortschritt</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f7fb;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .subject {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .subject h2 {
+      margin-top: 0;
+    }
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .task label {
+      flex: 1;
+    }
+    .checkboxes {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .progress-container {
+      margin: 1rem 0;
+    }
+    progress {
+      width: 100%;
+      height: 20px;
+    }
+    .type {
+      font-weight: bold;
+      font-size: 0.9em;
+      color: #444;
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>📘 My Module Tracker</h1>
+  <h1>📘 Mein Schulfortschritt</h1>
 
-  <div id="subject-tabs">
-    <button onclick="switchSubject('WEBT')">WEBT</button>
-    <button onclick="switchSubject('SEW')">SEW</button>
-    <button onclick="switchSubject('CMS')">CMS</button>
-  </div>
+  <div id="subjects"></div>
 
-  <div id="subject-container"></div>
+  <script>
+    // =============== CONFIG ===============
+    const subjects = {
+      "WEBT": {
+        coreRequiredSemester: 4,
+        coreRequiredYear: 8,
+        advImproveSemester: [1,2,4],
+        advImproveYear: [2,4,8],
+        tasks: [
+          ["CORE", "Docker"],
+          ["CORE", "Object Oriented PHP with Version Control"],
+          ["CORE", "Web Services with Plain PHP and JavaScript"],
+          ["CORE", "Composer and Views in MVC"],
+          ["CORE", "Sessions and Cookies"],
+          ["CORE", "Symfony - Webservice with basic VC"],
+          ["CORE", "Symfony - Using Doctrine ORM for persistence"],
+          ["CORE", "Erste Schritte mit TYPO3"],
+          ["ADV", "CI/CD mit Github"],
+          ["ADV", "Basic Unit Tests in PHP"],
+          ["ADV", "Coding Standards"],
+          ["ADV", "Composer in TYPO3"],
+          ["ADV", "Fluid Templating Engine"],
+          ["ADV", "GIT Expert"],
+          ["ADV", "Git Workflows"],
+          ["ADV", "OpenAPI"],
+          ["ADV", "PHP Documentation"],
+          ["ADV", "Redis"],
+          ["ADV", "Responsive Websites with SASS"],
+          ["ADV", "Speaking URLs for websites"],
+          ["ADV", "Swagger"],
+          ["ADV", "Symfony - Extending Twig"],
+          ["ADV", "Symfony - Security"],
+          ["ADV", "Symfony - Translations and Localized Routes"],
+          ["ADV", "Symfony - Validation"],
+          ["ADV", "Twig Templating Engine"],
+          ["ADV", "TYPO3 Backend Module erstellen"],
+          ["ADV", "TYPO3 Barrierefreiheit"],
+          ["ADV", "TYPO3 Benutzergruppen"],
+          ["ADV", "TYPO3 Bilder mit TypoScript erstellen"],
+          ["ADV", "TYPO3 Extensions einsetzen"],
+          ["ADV", "TYPO3 Fluid Teil 1"],
+          ["ADV", "TYPO3 Formulare"],
+          ["ADV", "TYPO3 MVC"],
+          ["ADV", "TYPO3 Routing and Redirects"],
+          ["ADV", "TYPO3 Translations"],
+          ["ADV", "TYPO3 TypoScript"],
+          ["ADV", "XDebug"]
+        ]
+      },
+      "SEW": {
+        coreRequiredSemester: 5,
+        coreRequiredYear: 9,
+        advImproveSemester: [1,2,3,4],
+        advImproveYear: [2,4,6,8],
+        tasks: [
+          ["CORE","JavaScript Basics 4th Grade"],
+          ["CORE","JavaScript Working with Objects"],
+          ["CORE","JavaScript Modules"],
+          ["ADV","JavaScript Classes"],
+          ["CORE","Vue App Template"],
+          ["CORE","Todo App"],
+          ["ADV","Linting und Debugging vue.js"],
+          ["ADV","Todo App extended"],
+          ["CORE","Registrationform"],
+          ["CORE","IP Address Lookup"],
+          ["CORE","Recipe Search"],
+          ["CORE","Webshop"],
+          ["ADV","vue.js Component Testing"],
+          ["ADV","i18n for vue.js Projects"],
+          ["ADV","vue.js Ecosystem & Individual vue.js Project"]
+        ]
+      },
+      "CMS": {
+        coreRequiredSemester: 3,
+        coreRequiredYear: 5,
+        advImproveSemester: [1,2,3,4],
+        advImproveYear: [2,4,6,8],
+        tasks: [
+          ["CORE","General Basics"],
+          ["CORE","Installing WordPress"],
+          ["CORE","Creating and Managing Content in WordPress"],
+          ["CORE","Setting up Plugins in WordPress"],
+          ["CORE","Creating a Custom Theme in WordPress"],
+          ["ADV","Accessibility in WordPress with the help of a plugin"],
+          ["ADV","Caching Optimization in WordPress"],
+          ["ADV","Creating a WordPress Backup Strategy"],
+          ["ADV","Hardening WordPress"],
+          ["ADV","SEO in WordPress with the help of a plugin"],
+          ["ADV","Setting up roles in WordPress"]
+        ]
+      }
+    };
 
-  <script src="main.js"></script>
+    // =============== LOGIC ===============
+    function loadProgress() {
+      return JSON.parse(localStorage.getItem("progress") || "{}");
+    }
+    function saveProgress(data) {
+      localStorage.setItem("progress", JSON.stringify(data));
+    }
+
+    function render() {
+      const progress = loadProgress();
+      const container = document.getElementById("subjects");
+      container.innerHTML = "";
+
+      for (const [subject, info] of Object.entries(subjects)) {
+        const div = document.createElement("div");
+        div.className = "subject";
+
+        // Fortschritt berechnen
+        const done = info.tasks.filter(([type, name]) => {
+          const key = subject + "_" + name;
+          const val = progress[key];
+          return val && val.quiz && val.meeting;
+        }).length;
+        const total = info.tasks.length;
+        const percent = Math.round((done / total) * 100);
+
+        div.innerHTML = `
+          <h2>${subject}</h2>
+          <div class="progress-container">
+            <progress value="${done}" max="${total}"></progress>
+            <div>${done}/${total} Aufgaben erledigt (${percent}%)</div>
+          </div>
+        `;
+
+        // Aufgabenliste
+        info.tasks.forEach(([type, name]) => {
+          const key = subject + "_" + name;
+          const val = progress[key] || { quiz: false, meeting: false };
+
+          const row = document.createElement("div");
+          row.className = "task";
+          row.innerHTML = `
+            <span class="type">${type}</span>
+            <label>${name}</label>
+            <div class="checkboxes">
+              <label><input type="checkbox" ${val.meeting ? "checked" : ""} data-key="${key}" data-field="meeting"> Gespräch</label>
+              <label><input type="checkbox" ${val.quiz ? "checked" : ""} data-key="${key}" data-field="quiz"> Quiz</label>
+            </div>
+          `;
+          div.appendChild(row);
+        });
+
+        container.appendChild(div);
+      }
+
+      // Checkboxen-Events
+      document.querySelectorAll("input[type=checkbox]").forEach(cb => {
+        cb.addEventListener("change", e => {
+          const key = e.target.dataset.key;
+          const field = e.target.dataset.field;
+          const progress = loadProgress();
+          if (!progress[key]) progress[key] = { quiz: false, meeting: false };
+          progress[key][field] = e.target.checked;
+          saveProgress(progress);
+          render(); // neu zeichnen
+        });
+      });
+    }
+
+    render();
+  </script>
 </body>
 </html>
