@@ -7,44 +7,44 @@ const subjects = {
     maxCoreCount: 8,
     maxAdvCount: 8,
     tasks: [
-          ["CORE", "01", "Docker"],
-          ["CORE", "02", "Object Oriented PHP with Version Control"],
-          ["CORE", "03", "Web Services with Plain PHP and JavaScript"],
-          ["CORE", "04", "Composer and Views in MVC"],
-          ["CORE", "05", "Sessions and Cookies"],
-          ["CORE", "06", "Symfony - Webservice with basic VC"],
-          ["CORE", "07", "Symfony - Using Doctrine ORM for persistence"],
-          ["CORE", "08", "Erste Schritte mit TYPO3"],
-          ["ADV", "", "CI/CD mit Github"],
-          ["ADV", "", "Basic Unit Tests in PHP"],
-          ["ADV", "", "Coding Standards"],
-          ["ADV", "", "Composer in TYPO3"],
-          ["ADV", "", "Fluid Templating Engine"],
-          ["ADV", "", "GIT Expert"],
-          ["ADV", "", "Git Workflows"],
-          ["ADV", "", "OpenAPI"],
-          ["ADV", "", "PHP Documentation"],
-          ["ADV", "", "Redis"],
-          ["ADV", "", "Responsive Websites with SASS"],
-          ["ADV", "", "Speaking URLs for websites"],
-          ["ADV", "", "Swagger"],
-          ["ADV", "", "Symfony - Extending Twig"],
-          ["ADV", "", "Symfony - Security"],
-          ["ADV", "", "Symfony - Translations and Localized Routes"],
-          ["ADV", "", "Symfony - Validation"],
-          ["ADV", "", "Twig Templating Engine"],
-          ["ADV", "", "TYPO3 Backend Module erstellen"],
-          ["ADV", "", "TYPO3 Barrierefreiheit"],
-          ["ADV", "", "TYPO3 Benutzergruppen"],
-          ["ADV", "", "TYPO3 Bilder mit TypoScript erstellen"],
-          ["ADV", "", "TYPO3 Extensions einsetzen"],
-          ["ADV", "", "TYPO3 Fluid Teil 1"],
-          ["ADV", "", "TYPO3 Formulare"],
-          ["ADV", "", "TYPO3 MVC"],
-          ["ADV", "", "TYPO3 Routing and Redirects"],
-          ["ADV", "", "TYPO3 Translations"],
-          ["ADV", "", "TYPO3 TypoScript"],
-          ["ADV", "", "XDebug"]
+      ["CORE", "01", "Docker"],
+      ["CORE", "02", "Object Oriented PHP with Version Control"],
+      ["CORE", "03", "Web Services with Plain PHP and JavaScript"],
+      ["CORE", "04", "Composer and Views in MVC"],
+      ["CORE", "05", "Sessions and Cookies"],
+      ["CORE", "06", "Symfony - Webservice with basic VC"],
+      ["CORE", "07", "Symfony - Using Doctrine ORM for persistence"],
+      ["CORE", "08", "Erste Schritte mit TYPO3"],
+      ["ADV", "", "CI/CD mit Github"],
+      ["ADV", "", "Basic Unit Tests in PHP"],
+      ["ADV", "", "Coding Standards"],
+      ["ADV", "", "Composer in TYPO3"],
+      ["ADV", "", "Fluid Templating Engine"],
+      ["ADV", "", "GIT Expert"],
+      ["ADV", "", "Git Workflows"],
+      ["ADV", "", "OpenAPI"],
+      ["ADV", "", "PHP Documentation"],
+      ["ADV", "", "Redis"],
+      ["ADV", "", "Responsive Websites with SASS"],
+      ["ADV", "", "Speaking URLs for websites"],
+      ["ADV", "", "Swagger"],
+      ["ADV", "", "Symfony - Extending Twig"],
+      ["ADV", "", "Symfony - Security"],
+      ["ADV", "", "Symfony - Translations and Localized Routes"],
+      ["ADV", "", "Symfony - Validation"],
+      ["ADV", "", "Twig Templating Engine"],
+      ["ADV", "", "TYPO3 Backend Module erstellen"],
+      ["ADV", "", "TYPO3 Barrierefreiheit"],
+      ["ADV", "", "TYPO3 Benutzergruppen"],
+      ["ADV", "", "TYPO3 Bilder mit TypoScript erstellen"],
+      ["ADV", "", "TYPO3 Extensions einsetzen"],
+      ["ADV", "", "TYPO3 Fluid Teil 1"],
+      ["ADV", "", "TYPO3 Formulare"],
+      ["ADV", "", "TYPO3 MVC"],
+      ["ADV", "", "TYPO3 Routing and Redirects"],
+      ["ADV", "", "TYPO3 Translations"],
+      ["ADV", "", "TYPO3 TypoScript"],
+      ["ADV", "", "XDebug"]
     ]
   },
   "SEW": {
@@ -53,21 +53,21 @@ const subjects = {
     advImproveSemester: [1,2,3,4],
     advImproveYear: [2,4,6,8],
     tasks: [
-          ["CORE","01","JavaScript Basics 4th Grade"],
-          ["CORE","02","JavaScript Working with Objects"],
-          ["CORE","03","JavaScript Modules"],
-          ["ADV","04","JavaScript Classes"],
-          ["CORE","05","Vue App Template"],
-          ["CORE","06","Todo App"],
-          ["ADV","07","Linting und Debugging vue.js"],
-          ["ADV","08","Todo App extended"],
-          ["CORE","09","Registrationform"],
-          ["CORE","10","IP Address Lookup"],
-          ["CORE","11","Recipe Search"],
-          ["CORE","12","Webshop"],
-          ["ADV","13","vue.js Component Testing"],
-          ["ADV","14","i18n for vue.js Projects"],
-          ["ADV","15","vue.js Ecosystem & Individual vue.js Project"]
+      ["CORE","01","JavaScript Basics 4th Grade"],
+      ["CORE","02","JavaScript Working with Objects"],
+      ["CORE","03","JavaScript Modules"],
+      ["ADV","04","JavaScript Classes"],
+      ["CORE","05","Vue App Template"],
+      ["CORE","06","Todo App"],
+      ["ADV","07","Linting und Debugging vue.js"],
+      ["ADV","08","Todo App extended"],
+      ["CORE","09","Registrationform"],
+      ["CORE","10","IP Address Lookup"],
+      ["CORE","11","Recipe Search"],
+      ["CORE","12","Webshop"],
+      ["ADV","13","vue.js Component Testing"],
+      ["ADV","14","i18n for vue.js Projects"],
+      ["ADV","15","vue.js Ecosystem & Individual vue.js Project"]
     ]
   },
   "CMS": {
@@ -76,17 +76,17 @@ const subjects = {
     advImproveSemester: [1,2,3,4],
     advImproveYear: [2,4,6,8],
     tasks: [
-          ["CORE","01","General Basics"],
-          ["CORE","02","Installing WordPress"],
-          ["CORE","03","Creating and Managing Content in WordPress"],
-          ["CORE","04","Setting up Plugins in WordPress"],
-          ["CORE","05","Creating a Custom Theme in WordPress"],
-          ["ADV","","Accessibility in WordPress with the help of a plugin"],
-          ["ADV","","Caching Optimization in WordPress"],
-          ["ADV","","Creating a WordPress Backup Strategy"],
-          ["ADV","","Hardening WordPress"],
-          ["ADV","","SEO in WordPress with the help of a plugin"],
-          ["ADV","","Setting up roles in WordPress"]
+      ["CORE","01","General Basics"],
+      ["CORE","02","Installing WordPress"],
+      ["CORE","03","Creating and Managing Content in WordPress"],
+      ["CORE","04","Setting up Plugins in WordPress"],
+      ["CORE","05","Creating a Custom Theme in WordPress"],
+      ["ADV","","Accessibility in WordPress with the help of a plugin"],
+      ["ADV","","Caching Optimization in WordPress"],
+      ["ADV","","Creating a WordPress Backup Strategy"],
+      ["ADV","","Hardening WordPress"],
+      ["ADV","","SEO in WordPress with the help of a plugin"],
+      ["ADV","","Setting up roles in WordPress"]
     ]
   }
 };
@@ -145,10 +145,15 @@ function renderTasks() {
 
     info.tasks.forEach(([type, num, name]) => {
       const key = subject + "_" + name;
-      const val = progress[key] || { quiz: false, meeting: false };
+      const val = progress[key] || { quiz: false, meeting: false, imp: false };
       const row = document.createElement("div");
       row.className = "task";
+
+      if (val.imp) row.classList.add("imp");
+      if (val.meeting && val.quiz) row.classList.add("done");
+
       row.innerHTML = `
+        <button class="impButton" data-key="${key}">!</button>
         <span class="type">${type}</span>
         <span class="num">${num || ""}</span>
         <label>${name}</label>
@@ -181,10 +186,24 @@ function renderTasks() {
       const field = e.target.dataset.field;
       const subject = e.target.dataset.subject;
       const progress = loadProgress();
-      if (!progress[key]) progress[key] = { quiz: false, meeting: false };
+      if (!progress[key]) progress[key] = { quiz: false, meeting: false, imp: false };
       progress[key][field] = e.target.checked;
       saveProgress(progress);
       renderTasks();
+    });
+  });
+
+  /* === Wichtigkeitsbutton === */
+  document.querySelectorAll(".impButton").forEach(btn => {
+    btn.addEventListener("click", e => {
+      const key = e.target.dataset.key;
+      const progress = loadProgress();
+      if (!progress[key]) progress[key] = { quiz: false, meeting: false, imp: false };
+      progress[key].imp = !progress[key].imp;
+      saveProgress(progress);
+
+      const row = e.target.closest(".task");
+      row.classList.toggle("imp", progress[key].imp);
     });
   });
 }
