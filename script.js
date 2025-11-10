@@ -140,7 +140,7 @@ function renderTasks() {
       <div class="chart-container">
         <canvas id="chart_${subject}"></canvas>
       </div>
-      <div class="status">Semester: ${status.semester} | Jahr: ${status.jahr}</div>
+      <div class="status"> ${status.semester} | ${status.jahr}</div>
     `;
 
     info.tasks.forEach(([type, num, name]) => {
