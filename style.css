@@ -12,7 +12,7 @@ body {
 
 /* === NAVIGATION === */
 nav {
-  background: #1d1d29;
+  background: #004052;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -32,7 +32,7 @@ nav button {
 }
 
 nav button.active {
-  background: #3498db;
+  background: #FFA500;
   color: white;
 }
 
@@ -92,7 +92,7 @@ h1 {
 .type {
   font-weight: bold;
   font-size: 0.85em;
-  color: #444;
+  color: #FFA500;
   width: 70px;
   text-align: right;
   margin-right: 0.5rem;

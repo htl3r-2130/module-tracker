@@ -170,7 +170,7 @@ function renderTasks() {
 
     new Chart(ctx, {
       type: "doughnut",
-      data: { datasets: [{ data: [done, total - done], backgroundColor: ["#83a4f7", "#ffffffff"], borderWidth: 0 }] },
+      data: { datasets: [{ data: [done, total - done], backgroundColor: ["#FFA500", "#00607a"], borderWidth: 0 }] },
       options: { cutout: "70%", plugins: { legend: { position: "bottom" } } }
     });
   }
@@ -222,13 +222,13 @@ function renderDashboard() {
 
     new Chart(document.getElementById(`sem_${subject}`), {
       type: "doughnut",
-      data: { labels: ["Semester", "Offen"], datasets: [{ data: [Math.min(status.doneCore, info.coreRequiredSemester), info.coreRequiredSemester - Math.min(status.doneCore, info.coreRequiredSemester)], backgroundColor: ["#83a4f7", "#ffffffff"], borderWidth: 0 }] },
+      data: { labels: ["Semester", "Offen"], datasets: [{ data: [Math.min(status.doneCore, info.coreRequiredSemester), info.coreRequiredSemester - Math.min(status.doneCore, info.coreRequiredSemester)], backgroundColor: ["#FFA500", "#00607a"], borderWidth: 0 }] },
       options: { cutout: "70%", plugins: { legend: { display: false } } }
     });
 
     new Chart(document.getElementById(`year_${subject}`), {
       type: "doughnut",
-      data: { labels: ["Jahr", "Offen"], datasets: [{ data: [Math.min(status.doneCore, info.coreRequiredYear), info.coreRequiredYear - Math.min(status.doneCore, info.coreRequiredYear)], backgroundColor: ["#83a4f7", "#ffffffff"], borderWidth: 0 }] },
+      data: { labels: ["Jahr", "Offen"], datasets: [{ data: [Math.min(status.doneCore, info.coreRequiredYear), info.coreRequiredYear - Math.min(status.doneCore, info.coreRequiredYear)], backgroundColor: ["#FFA500", "#00607a"], borderWidth: 0 }] },
       options: { cutout: "70%", plugins: { legend: { display: false } } }
     });
   }
