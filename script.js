@@ -180,18 +180,43 @@ function renderTasks() {
     });
   }
 
-  document.querySelectorAll("input[type=checkbox]").forEach(cb => {
-    cb.addEventListener("change", e => {
-      const key = e.target.dataset.key;
-      const field = e.target.dataset.field;
-      const subject = e.target.dataset.subject;
-      const progress = loadProgress();
-      if (!progress[key]) progress[key] = { quiz: false, meeting: false, imp: false };
-      progress[key][field] = e.target.checked;
-      saveProgress(progress);
-      renderTasks();
-    });
+document.querySelectorAll("input[type=checkbox]").forEach(cb => {
+  cb.addEventListener("change", e => {
+    const key = e.target.dataset.key;
+    const field = e.target.dataset.field;
+    const subject = e.target.dataset.subject;
+
+    const progress = loadProgress();
+    if (!progress[key]) progress[key] = { quiz: false, meeting: false, imp: false };
+    progress[key][field] = e.target.checked;
+    saveProgress(progress);
+
+    // === Task-Darstellung aktualisieren ===
+    const row = e.target.closest(".task");
+    const val = progress[key];
+    row.classList.toggle("done", val.meeting && val.quiz);
+
+    // === Nur Chart & Status für dieses Fach aktualisieren ===
+    const info = subjects[subject];
+    const done = info.tasks.filter(([type, , name]) =>
+      progress[subject + "_" + name]?.meeting && progress[subject + "_" + name]?.quiz
+    ).length;
+    const total = info.tasks.length;
+
+    // Chart im Canvas aktualisieren (ohne Neurendern)
+    const canvas = document.getElementById(`chart_${subject}`);
+    const chart = Chart.getChart(canvas);
+    if (chart) {
+      chart.data.datasets[0].data = [done, total - done];
+      chart.update();
+    }
+
+    // Status-Text (Semester | Jahr) updaten
+    const status = getStatus(subject, info, progress);
+    const statusDiv = canvas.closest(".subject").querySelector(".status");
+    statusDiv.textContent = `${status.semester} | ${status.jahr}`;
   });
+});
 
   /* === Wichtigkeitsbutton === */
   document.querySelectorAll(".impButton").forEach(btn => {
